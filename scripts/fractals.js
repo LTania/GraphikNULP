@@ -7,12 +7,13 @@ function fractal(){
         var context = canvas.getContext('2d');
         mandel();
         function zoom(event) {
+            var newScale = document.getElementById("scale").value;
             var bodyRect = document.body.getBoundingClientRect(),
             elemRect = canvas.getBoundingClientRect(),
             offset   = elemRect.top - bodyRect.top;
-            xmin += event.pageX/scale - 30/scale;
-            ymin += (event.pageY - offset )/scale - 50/scale;
-            scale*= document.getElementById("scale").value;
+            xmin += event.pageX/scale - 400/newScale/scale;
+            ymin += (event.pageY - offset )/scale - 400/newScale/scale;
+            scale*= newScale;
             mandel();
         }
 
