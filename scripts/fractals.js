@@ -10,9 +10,9 @@ function fractal(){
             var bodyRect = document.body.getBoundingClientRect(),
             elemRect = canvas.getBoundingClientRect(),
             offset   = elemRect.top - bodyRect.top;
-            xmin += event.pageX/scale - 200/scale;
-            ymin += (event.pageY - offset + 30)/scale - 200/scale;
-            scale*=2;
+            xmin += event.pageX/scale - 30/scale;
+            ymin += (event.pageY - offset )/scale - 50/scale;
+            scale*= document.getElementById("scale").value;
             mandel();
         }
 
@@ -45,17 +45,7 @@ function fractal(){
                     var belongsToSet =
 							checkIfBelongsToMandelbrotSet(x / scale + xmin,
 								y / scale + ymin);
-                    // zx = 0;
-                    // zy = 0;
-
-                    // do {
-                    //     xt = zx * zy;
-                    //     zx = zx * zx - zy * zy + cx;
-                    //     zy = 2 * xt + cy;
-                    //     i++;
-                    // }
-                    // while (i < 255 && (zx * zx + zy * zy) < 16);
-
+                    
                     if (belongsToSet == 0) {
                         context .fillStyle = '#000';
 							context .fillRect(x, y, 1, 1); // Draw a black pixel
@@ -67,4 +57,9 @@ function fractal(){
             }
         }
 }
+
+function getSliderInfo(){
+    var sliderValue = document.getElementById("scale").value;
+    document.getElementById("sliderValue").innerHTML = sliderValue;
+};
 

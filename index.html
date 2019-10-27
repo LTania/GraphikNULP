@@ -34,7 +34,10 @@
 	</div>
 	<div class="fractls height">
 		<canvas id="myCanvas" width="600" height="600" ></canvas><br>
-		<button onclick="fractal()">Build fractal</button>
+		<input type="range" id="scale" min="1" max="10" step="0.1" value="2" onchange="getSliderInfo()">
+		<label for="volume">Масштаб</label>
+		<output id="sliderValue">2</output><br>
+		<button onclick="fractal()">Побудувати фрактал</button><br>
 	</div>
 	<div class="colors height">
 		<p>Here will be color</p>
