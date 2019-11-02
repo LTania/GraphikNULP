@@ -39,13 +39,13 @@ function fractal(){
             var realComponentOfResult = x;
             var imaginaryComponentOfResult = y;
             var zx;
-            var maxIterations = 200;
+            var maxIterations = 150;
             for (var i = 0; i < maxIterations; i++) {
                 var tempRealComponent = realComponentOfResult * realComponentOfResult
                     - imaginaryComponentOfResult * imaginaryComponentOfResult;
                 var tempImaginaryComponent = 2 * realComponentOfResult * imaginaryComponentOfResult;
                 realComponentOfResult = tempRealComponent + 0.285;
-                imaginaryComponentOfResult = tempImaginaryComponent - 0.01;
+                imaginaryComponentOfResult = tempImaginaryComponent + 0.01;
 
 
                 // Return a number as a percentage
