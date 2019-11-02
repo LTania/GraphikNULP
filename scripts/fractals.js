@@ -1,7 +1,6 @@
 function fractal(){
     var xmin = -1.9, ymin = -1.5, scale = 200;
-        var x, y, i, xt;
-        var color;
+        var x, y;
         var canvas = document.getElementById('myCanvas');
         canvas.addEventListener("mousedown", zoom, false);
         var context = canvas.getContext('2d');
@@ -12,30 +11,50 @@ function fractal(){
             elemRect = canvas.getBoundingClientRect(),
             offset   = elemRect.top - bodyRect.top;
             xmin += event.pageX/scale - 400/newScale/scale;
-            ymin += (event.pageY - offset )/scale - 400/newScale/scale;
+            ymin += (event.pageY - offset)/scale - 400/newScale/scale;
             scale*= newScale;
             mandel();
         }
 
-        function checkIfBelongsToMandelbrotSet(x, y) {
+        // function checkIfBelongsToMandelbrotSet(x, y) {
+        //     var realComponentOfResult = x;
+        //     var imaginaryComponentOfResult = y;
+        //     var maxIterations = 100;
+        //     for (var i = 0; i < maxIterations; i++) {
+        //         var tempRealComponent = realComponentOfResult * realComponentOfResult
+        //             - imaginaryComponentOfResult * imaginaryComponentOfResult
+        //             + x;
+        //         var tempImaginaryComponent = 2 * realComponentOfResult * imaginaryComponentOfResult
+        //             + y;
+        //         realComponentOfResult = tempRealComponent;
+        //         imaginaryComponentOfResult = tempImaginaryComponent;
+
+        //         // Return a number as a percentage
+        //         if (Math.abs(realComponentOfResult + imaginaryComponentOfResult) > 16)
+        //             return (i / maxIterations * 100);
+        //     }
+        //     return 0;   // Return zero if in set        
+        // }
+        function checkIfBelongsToMandelbrotSet(x, y){
             var realComponentOfResult = x;
             var imaginaryComponentOfResult = y;
-            var maxIterations = 100;
+            var zx;
+            var maxIterations = 200;
             for (var i = 0; i < maxIterations; i++) {
                 var tempRealComponent = realComponentOfResult * realComponentOfResult
-                    - imaginaryComponentOfResult * imaginaryComponentOfResult
-                    + x;
-                var tempImaginaryComponent = 2 * realComponentOfResult * imaginaryComponentOfResult
-                    + y;
-                realComponentOfResult = tempRealComponent;
-                imaginaryComponentOfResult = tempImaginaryComponent;
+                    - imaginaryComponentOfResult * imaginaryComponentOfResult;
+                var tempImaginaryComponent = 2 * realComponentOfResult * imaginaryComponentOfResult;
+                realComponentOfResult = tempRealComponent + 0.285;
+                imaginaryComponentOfResult = tempImaginaryComponent - 0.01;
+
 
                 // Return a number as a percentage
                 if (Math.abs(realComponentOfResult + imaginaryComponentOfResult) > 16)
                     return (i / maxIterations * 100);
             }
-            return 0;   // Return zero if in set        
+            return 0;   // Return zero if in set 
         }
+
 
         function mandel() {
             for (x = 0; x < canvas.width; x++) {
