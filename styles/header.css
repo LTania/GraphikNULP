@@ -26,3 +26,7 @@
 	color: aqua;
 	background-color: azure;
 }
+
+#fractalCanvas {
+	float: left;
+}
