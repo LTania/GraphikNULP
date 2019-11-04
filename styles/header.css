@@ -15,7 +15,7 @@
 }
 
 .menu-fixed a{
-	float: left;
+	float: right;
 	display: block;
 	color: #C3D4EA;
 	text-align: center;
@@ -27,6 +27,35 @@
 	background-color: azure;
 }
 
+.menu-fixed img{
+	width: 5%;
+	padding-left: 30px
+}
+
+.home img{
+	width: 30%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 80px;
+}
+
+.home .main-rect{
+	position: absolute;
+	background-color: #F8E8E8;
+	width: 60%;
+	height: 50px;
+	right: 	0;
+	right: 	0;
+	top: 345px;
+	z-index: -1;
+}
+
+ .buttons-div{
+	background-color:#F8E8E8; 
+}
+
 #fractalCanvas {
+	margin-left: 50px;
 	float: left;
 }
