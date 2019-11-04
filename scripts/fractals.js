@@ -1,7 +1,20 @@
 function fractal() {
+
+    class Fractal {
+        constructor(xmin, ymin, scale, isJulia) {
+            this.xmin = xmin;
+            this.ymin = ymin;
+            this.scale = scale;
+            this.isJulia = isJulia;
+        }
+    }
+    
+    var history = [];
+
     var canvas = document.getElementById('fractalCanvas');
     canvas.addEventListener('mousedown', zoom, false);
     var context = canvas.getContext('2d');
+    var fract;
     var xmin, ymin, scale = 200;
     var x, y;
 
@@ -20,15 +33,22 @@ function fractal() {
     if (fractalChoose == 'mandelbrotSet') {
         xmin = -1.9, ymin = -1.5;
         isJulia = false;
+        fract = new Fractal(-1.9, -1.5, 200, false);
 
     } else {
         xmin = -1.4, ymin = -1.5;
         isJulia = true;
+        fract = new Fractal(-1.4, -1.5, 200, true);
     }
+
+    history.push(fract);
 
     buildFractal();
 
-
+    document.getElementById('stepBack').addEventListener("click", function () {
+        history.pop();
+        buildFractal();
+    });
 
 
     function zoom(event) {
@@ -37,7 +57,7 @@ function fractal() {
             elemRect = canvas.getBoundingClientRect(),
             offsetTop = elemRect.top - bodyRect.top,
             offsetLeft = elemRect.left - bodyRect.left;
-        if (!isJulia) {
+        if (!history[history.length-1].isJulia) {
             xmin += (event.pageX - offsetLeft) / scale - 400 / newScale / scale;
             ymin += (event.pageY - offsetTop) / scale - 400 / newScale / scale;
         } else {
@@ -45,6 +65,7 @@ function fractal() {
             ymin += (event.pageY - offsetTop) / scale - 800 / newScale / scale;
         }
         scale *= newScale;
+        history.push(new Fractal(xmin, ymin, scale, history[history.length-1].isJulia));
         buildFractal();
     }
 
@@ -56,7 +77,7 @@ function fractal() {
             var tempRealComponent = realComponentOfResult * realComponentOfResult
                 - imaginaryComponentOfResult * imaginaryComponentOfResult;
             var tempImaginaryComponent = 2 * realComponentOfResult * imaginaryComponentOfResult;
-            if (isJulia) {
+            if (history[history.length-1].isJulia) {
                 realComponentOfResult = tempRealComponent + new Number(constForJuliaX);
                 imaginaryComponentOfResult = tempImaginaryComponent + new Number(constForJuliaY);
             } else {
@@ -76,8 +97,8 @@ function fractal() {
         for (x = 0; x < canvas.width; x++) {
             for (y = 0; y < canvas.height; y++) {
                 var belongsToSet =
-                    checkIfBelongsToMandelbrotSet(x / scale + xmin,
-                        y / scale + ymin);
+                    checkIfBelongsToMandelbrotSet(x / history[history.length-1].scale + history[history.length-1].xmin,
+                        y / history[history.length-1].scale + history[history.length-1].ymin);
 
                 if (belongsToSet == 0) {
                     context.fillStyle = '#000';
