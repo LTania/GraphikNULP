@@ -74,9 +74,6 @@ function fractal() {
     function buildFractal() {
         for (x = 0; x < canvas.width; x++) {
             for (y = 0; y < canvas.height; y++) {
-                i = 0;
-                cx = xmin + x / scale;
-                cy = ymin + y / scale;
                 var belongsToSet =
                     checkIfBelongsToMandelbrotSet(x / scale + xmin,
                         y / scale + ymin);
