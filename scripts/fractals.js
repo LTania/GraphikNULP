@@ -142,10 +142,22 @@ function checkRadioButton() {
             if (fractalRadioButt[i].value == 'mandelbrotSet') {
                 document.getElementById('constForJuliaX').hidden = true;
                 document.getElementById('constForJuliaY').hidden = true;
+                document.getElementById('label-juliaX').hidden = true;
+                document.getElementById('label-juliaY').hidden = true;
             } else if (fractalRadioButt[i].value == 'juliaSet') {
                 document.getElementById('constForJuliaX').hidden = false;
                 document.getElementById('constForJuliaY').hidden = false;
+				document.getElementById('label-juliaX').hidden = false;
+                document.getElementById('label-juliaY').hidden = false;
             }
         }
     }
+}
+
+function saveImage() {
+					var canvas = document.getElementById("fractalCanvas");
+					var link = document.createElement('a');
+    				link.download = "test.png";
+    				link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
+    				link.click();
 }
