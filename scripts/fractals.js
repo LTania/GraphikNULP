@@ -72,7 +72,14 @@ function fractal() {
     function checkIfBelongsToMandelbrotSet(x, y) {
         var realComponentOfResult = x;
         var imaginaryComponentOfResult = y;
-        var maxIterations = 100;
+        var maxIterations;
+        if(scale < 1000){
+            maxIterations = 100;
+        } else if(scale<10000){
+            maxIterations = 300;
+        } else {
+            maxIterations = 1000;
+        }
         for (var i = 0; i < maxIterations; i++) {
             var tempRealComponent = realComponentOfResult * realComponentOfResult
                 - imaginaryComponentOfResult * imaginaryComponentOfResult;
