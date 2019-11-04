@@ -146,3 +146,11 @@ function checkRadioButton() {
         }
     }
 }
+
+function saveImage() {
+					var canvas = document.getElementById("fractalCanvas");
+					var link = document.createElement('a');
+    				link.download = "test.png";
+    				link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
+    				link.click();
+}
