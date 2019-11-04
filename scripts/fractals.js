@@ -35,13 +35,14 @@ function fractal() {
         var newScale = document.getElementById('scale').value;
         var bodyRect = document.body.getBoundingClientRect(),
             elemRect = canvas.getBoundingClientRect(),
-            offset = elemRect.top - bodyRect.top;
+            offsetTop = elemRect.top - bodyRect.top,
+            offsetLeft = elemRect.left - bodyRect.left;
         if (!isJulia) {
-            xmin += event.pageX / scale - 400 / newScale / scale;
-            ymin += (event.pageY - offset) / scale - 400 / newScale / scale;
+            xmin += (event.pageX - offsetLeft) / scale - 400 / newScale / scale;
+            ymin += (event.pageY - offsetTop) / scale - 400 / newScale / scale;
         } else {
-            xmin += event.pageX / scale - 400 / newScale / scale;
-            ymin += (event.pageY - offset) / scale - 800 / newScale / scale;
+            xmin += (event.pageX - offsetLeft) / scale - 400 / newScale / scale;
+            ymin += (event.pageY - offsetTop) / scale - 800 / newScale / scale;
         }
         scale *= newScale;
         buildFractal();
@@ -101,7 +102,6 @@ document.addEventListener("DOMContentLoaded", checkRadioButton);
 
 function addRadioButtonCheckEvent() {
     var fractalRadioButt = document.getElementsByName('fractalChoose');
-    var fractalChoose;
     for (var i = 0; i < fractalRadioButt.length; i++) {
         fractalChoose = fractalRadioButt[i].addEventListener('change', checkRadioButton);
     }

@@ -5,48 +5,50 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="styles/normalize.css">
-	<link rel="stylesheet" href="styles/header.css">
-</head>
+	<link rel="stylesheet" href="styles/header.css"> </head>
 <script src="scripts/header.js"></script>
 <script src="scripts/fractals.js"></script>
-
 <body>
 	<div class="header">
 		<div class="menu-fixed">
-<!--		<img src="images/bwP.png" alt="">-->
-<!--				<p>BOTANIA</p>-->
-				<a href="#" onclick="scrollHome()">Home</a>
-				<a href="#" onclick="scrollFractals()">Fractals</a>
-				<a href="#" onclick="scrollColors()">Colors</a>
-				<a href="#" onclick="scrollAffin()">Affinne</a>
-				<a href="#" onclick="scrollAbout()">About</a>
-				<a href="#" onclick="scrollTeam()">Team</a>
-		</div>
+			<!--		<img src="images/bwP.png" alt="">-->
+			<!--				<p>BOTANIA</p>--><img
+				src="images/%D1%82%D1%96%D0%BB%D1%8C%D0%BA%D0%B8%20%D1%82%D0%B5%D0%BA%D1%81%D1%82.png" alt=""> <a
+				href="#" onclick="scrollHome()">Про нас</a> <a href="#" onclick="scrollFractals()">Довідка</a> <a
+				href="#" onclick="scrollColors()">Афінні перетворення</a> <a href="#"
+				onclick="scrollAffin()">Кольори</a> <a href="#" onclick="scrollAbout()">Фрактали</a> <a href="#"
+				onclick="scrollTeam()">Головна</a> </div>
 	</div>
-	<div class="home height">
-		<p>it is main page</p>
+	<div class="home height"> <img src="images/%D0%B1%D0%B5%D0%B7%20%D1%84%D0%BE%D0%BD%D1%83.png" alt="">
+		<div class="main-rect"> </div>
 	</div>
 	<div class="fractls height">
-
-		<canvas id="fractalCanvas" width="600" height="600" ></canvas><br>
-
-		<button id="stepBack">Step back</button><br>
-
-		<input type="radio" id="mandelbrotSet"
-           name="fractalChoose" value="mandelbrotSet" checked>
-    	<label for="mandelbrotSet">Mandelbrot set</label>
-		<input type="radio" id="juliaSet"
-           name="fractalChoose" value="juliaSet">
-		<label for="juliaSet">Julia set</label><br>
-		
-		<input type="number" id="constForJuliaX">
-		<input type="number" id="constForJuliaY">
-
-		<input type="range" id="scale" min="1" max="10" step="0.1" value="2" onchange="getSliderInfo()">
-		<label for="volume">Масштаб</label>
-		<output id="sliderValue">2</output><br>
-
-		<button onclick="fractal()">Побудувати фрактал</button><br>
+		<canvas id="fractalCanvas" width="600" height="600"></canvas>
+		<br>
+		<div class="buttons-div">
+			<button id="stepBack">Step back</button> 
+			<button id="saveFractalImage">Save fractal</button> <br>
+			<input type="radio" id="mandelbrotSet" name="fractalChoose" value="mandelbrotSet" checked>
+			<label for="mandelbrotSet">Mandelbrot set</label>
+			<input type="radio" id="juliaSet" name="fractalChoose" value="juliaSet">
+			<label for="juliaSet">Julia set</label>
+			<br>
+			<input type="number" id="constForJuliaX">
+			<input type="number" id="constForJuliaY">
+			<input type="range" id="scale" min="1" max="10" step="0.1" value="2" onchange="getSliderInfo()">
+			<label for="volume">Масштаб</label>
+			<output id="sliderValue">2</output>
+			<br>
+			<select>
+				<option id="green">Зелена</option>
+				<option id="red">Червона</option>
+				<option id="yellow">Жовта</option>
+				<option id="blue">Синя</option>
+			</select><br>
+			<button onclick="fractal()">Побудувати фрактал</button>
+			<br>
+			<p id="status">Статус:</p>
+		 </div>
 	</div>
 	<div class="colors height">
 		<p>Here will be color</p>
