@@ -22,6 +22,12 @@ function fractal() {
     var canvas = document.getElementById('fractalCanvas');
     if (c == 0) {
         canvas.addEventListener('mousedown', zoom, false);
+        document.getElementById('stepBack').addEventListener("click", function () {
+            if (allHistory.length > 1) {
+                allHistory.pop();
+                buildFractal();
+            }
+        });
         c++;
     }
     var context = canvas.getContext('2d');
@@ -48,16 +54,8 @@ function fractal() {
 
     buildFractal();
 
-    if (c == 0) {
-        document.getElementById('stepBack').addEventListener("click", function () {
-            allHistory.pop();
-            buildFractal();
-        });
-    }
-
 
     function zoom(event) {
-        console.log('I`m here');
         var newScale = document.getElementById('scale').value;
         var bodyRect = document.body.getBoundingClientRect(),
             elemRect = canvas.getBoundingClientRect(),
@@ -68,16 +66,16 @@ function fractal() {
         var ymin = allHistory[allHistory.length - 1].ymin;
         if (!allHistory[allHistory.length - 1].isJulia) {
             xmin += (event.pageX - offsetLeft) / scale - 400 / newScale / scale;
-            ymin += (event.pageY - offsetTop) / scale - 400 / newScale / scale;
+            ymin += (event.pageY - offsetTop) / scale - 400 / newScale* (1 + newScale * 0.1) / scale;
         } else {
             xmin += (event.pageX - offsetLeft) / scale - 400 / newScale / scale;
-            ymin += (event.pageY - offsetTop) / scale - 400 / newScale * (1 + newScale*0.1) / scale;
+            ymin += (event.pageY - offsetTop) / scale - 400 / newScale * (1 + newScale * 0.1) / scale;
         }
 
         scale *= newScale;
         allHistory.push(new Fractal(xmin, ymin,
-             scale, allHistory[allHistory.length - 1].isJulia, allHistory[allHistory.length - 1].constForJuliaX
-             , allHistory[allHistory.length - 1].constForJuliaY));
+            scale, allHistory[allHistory.length - 1].isJulia, allHistory[allHistory.length - 1].constForJuliaX
+            , allHistory[allHistory.length - 1].constForJuliaY));
         buildFractal();
     }
 
@@ -110,11 +108,12 @@ function fractal() {
         }
         return 0;   // Return zero if in set 
     }
-	
+
 
     function buildFractal() {
-		var e = document.getElementById("col-sel");
-		var valCol = e.value;
+        document.getElementById('status').innerHTML = "Статус: виконується";
+        var e = document.getElementById("col-sel");
+        var valCol = e.value;
         for (x = 0; x < canvas.width; x++) {
             for (y = 0; y < canvas.height; y++) {
                 var belongsToSet =
@@ -125,25 +124,26 @@ function fractal() {
                     context.fillStyle = '#000';
                     context.fillRect(x, y, 1, 1); // Draw a black pixel
                 } else {
-					if (valCol == 1){
-						context.fillStyle = 'hsl(120, 100%, ' + belongsToSet + '%)';
-                    	context.fillRect(x, y, 1, 1); // Draw a colorful pixel
-					}
-					else if (valCol == 2){
-						context.fillStyle = 'hsl(0, 100%, ' + belongsToSet + '%)';
-                    	context.fillRect(x, y, 1, 1); // Draw a colorful pixel
-					}
-					else if (valCol == 3){
-						context.fillStyle = 'hsl(60, 100%, ' + belongsToSet + '%)';
-                    	context.fillRect(x, y, 1, 1); // Draw a colorful pixel
-					}
-					else{
-                    context.fillStyle = 'hsl(240, 100%, ' + belongsToSet + '%)';
-                    context.fillRect(x, y, 1, 1); // Draw a colorful pixel
-					}
+                    if (valCol == 1) {
+                        context.fillStyle = 'hsl(120, 100%, ' + belongsToSet + '%)';
+                        context.fillRect(x, y, 1, 1); // Draw a colorful pixel
+                    }
+                    else if (valCol == 2) {
+                        context.fillStyle = 'hsl(0, 100%, ' + belongsToSet + '%)';
+                        context.fillRect(x, y, 1, 1); // Draw a colorful pixel
+                    }
+                    else if (valCol == 3) {
+                        context.fillStyle = 'hsl(60, 100%, ' + belongsToSet + '%)';
+                        context.fillRect(x, y, 1, 1); // Draw a colorful pixel
+                    }
+                    else {
+                        context.fillStyle = 'hsl(240, 100%, ' + belongsToSet + '%)';
+                        context.fillRect(x, y, 1, 1); // Draw a colorful pixel
+                    }
                 }
             }
         }
+        document.getElementById('status').innerHTML = "Статус: виконано";
     }
 }
 
