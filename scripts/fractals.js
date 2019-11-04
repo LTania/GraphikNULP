@@ -110,8 +110,11 @@ function fractal() {
         }
         return 0;   // Return zero if in set 
     }
+	
 
     function buildFractal() {
+		var e = document.getElementById("col-sel");
+		var valCol = e.value;
         for (x = 0; x < canvas.width; x++) {
             for (y = 0; y < canvas.height; y++) {
                 var belongsToSet =
@@ -122,8 +125,22 @@ function fractal() {
                     context.fillStyle = '#000';
                     context.fillRect(x, y, 1, 1); // Draw a black pixel
                 } else {
-                    context.fillStyle = 'hsl(0, 100%, ' + belongsToSet + '%)';
+					if (valCol == 1){
+						context.fillStyle = 'hsl(120, 100%, ' + belongsToSet + '%)';
+                    	context.fillRect(x, y, 1, 1); // Draw a colorful pixel
+					}
+					else if (valCol == 2){
+						context.fillStyle = 'hsl(0, 100%, ' + belongsToSet + '%)';
+                    	context.fillRect(x, y, 1, 1); // Draw a colorful pixel
+					}
+					else if (valCol == 3){
+						context.fillStyle = 'hsl(60, 100%, ' + belongsToSet + '%)';
+                    	context.fillRect(x, y, 1, 1); // Draw a colorful pixel
+					}
+					else{
+                    context.fillStyle = 'hsl(240, 100%, ' + belongsToSet + '%)';
                     context.fillRect(x, y, 1, 1); // Draw a colorful pixel
+					}
                 }
             }
         }

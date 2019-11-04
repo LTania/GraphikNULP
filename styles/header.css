@@ -78,7 +78,7 @@
 	text-align: center;
 	font-size: 20px;
 }
-.buttons-div #choose {
+.buttons-div #choose, #choose1 {
 	text-align: center;
 }
 
@@ -89,10 +89,41 @@
 	flex-direction: row;
 }
 
+.block{
+	display: flex;
+	justify-content: flex-end;
+}
+
+#saveFractalImage{
+	margin-right: 115px;
+}
+
+#stepBack{
+	margin-right: 10px;
+}
+
+.sel, .but{
+	display: flex;
+	justify-content: center;
+		font-family: Montserrat Alternates;
+}
+
+#built-but{
+	height: 70px;
+	width: 130px;
+	margin-top: 10px;
+}
+
+
 .fractls {
 	margin-top: 50px;
 }
 
+.icons{
+	border-radius: 5px;
+	background-color: #C3D4EA;
+/*	float: right;*/
+}
 .chooseFract{
 	margin-left: 200px;
 	margin-top: 10px;
@@ -100,6 +131,15 @@
 
 .buttons-div #label-juliaX{
 	margin-left: 180px;
+}
+
+#vol{
+	display: flex;
+	justify-content: center;
+}
+#sliderValue{
+	margin-left: 4px;
+	margin-right: 4px;
 }
 
 #constForJuliaX, #constForJuliaY{
