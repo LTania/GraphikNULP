@@ -47,10 +47,11 @@ function fractal() {
         fract = new Fractal(-1.9, -1.5, 200, false);
 
     } else {
-        fract = new Fractal(-1.4, -1.5, 200, true, Number(constForJuliaX), Number(constForJuliaY));
+        fract = new Fractal(-1.55, -1.5, 190, true, Number(constForJuliaX), Number(constForJuliaY));
     }
 
     allHistory.push(fract);
+	        document.getElementById('status').innerHTML = "Статус: виконується";
 
     buildFractal();
 
@@ -64,18 +65,17 @@ function fractal() {
         var scale = allHistory[allHistory.length - 1].scale;
         var xmin = allHistory[allHistory.length - 1].xmin;
         var ymin = allHistory[allHistory.length - 1].ymin;
-        if (!allHistory[allHistory.length - 1].isJulia) {
-            xmin += (event.pageX - offsetLeft) / scale - 400 / newScale / scale;
-            ymin += (event.pageY - offsetTop) / scale - 400 / newScale* (1 + newScale * 0.1) / scale;
-        } else {
+        
             xmin += (event.pageX - offsetLeft) / scale - 400 / newScale / scale;
             ymin += (event.pageY - offsetTop) / scale - 400 / newScale * (1 + newScale * 0.1) / scale;
-        }
+        
 
         scale *= newScale;
         allHistory.push(new Fractal(xmin, ymin,
             scale, allHistory[allHistory.length - 1].isJulia, allHistory[allHistory.length - 1].constForJuliaX
             , allHistory[allHistory.length - 1].constForJuliaY));
+		        document.getElementById('status').innerHTML = "Статус: виконується";
+
         buildFractal();
     }
 
@@ -111,7 +111,6 @@ function fractal() {
 
 
     function buildFractal() {
-        document.getElementById('status').innerHTML = "Статус: виконується";
         var e = document.getElementById("col-sel");
         var valCol = e.value;
         for (x = 0; x < canvas.width; x++) {
@@ -124,6 +123,7 @@ function fractal() {
                     context.fillStyle = '#000';
                     context.fillRect(x, y, 1, 1); // Draw a black pixel
                 } else {
+					
                     if (valCol == 1) {
                         context.fillStyle = 'hsl(120, 100%, ' + belongsToSet + '%)';
                         context.fillRect(x, y, 1, 1); // Draw a colorful pixel

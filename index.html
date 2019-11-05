@@ -47,16 +47,18 @@
 			<label for="juliaSet">Жюліа</label>
 			<br> <br>
 			<label for="constForJuliaX" id="label-juliaX"> C </label>
-			<input type="number" id="constForJuliaX">
+			<input type="number" min="-1" max="1" step="0.05" id="constForJuliaX">
 			<label for="constForJuliaY" id="label-juliaY"> + i </label>
-			<input type="number" id="constForJuliaY">
-			<br><br>
+			<input type="number" min="-1" max="1" step="0.05" id="constForJuliaY">
+			<br>
+			
+<br>
 			<div id="vol">
 			<label for="volume" >Масштаб </label>
 			<output id="sliderValue">2</output>
 			<input type="range" id="scale" min="1" max="10" step="0.1" value="2" onchange="getSliderInfo()">
 			</div>
-			
+			<p id="choose3">(Для масштабування натисніть на зображення)</p>
 			<br>
 			<p id="choose1">Колірна схема:</p>
 			<div class="sel">
