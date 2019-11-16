@@ -5,81 +5,80 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="styles/normalize.css">
-	<link rel="stylesheet" href="styles/header.css"> </head>
-	<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
-	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
-
-	<script src="scripts/header.js"></script>
-	<script src="scripts/fractals.js"></script>
+	<link rel="stylesheet" href="styles/header.css">
+	<link rel="stylesheet" href="styles/colors.css"> </head>
+<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="scripts/header.js"></script>
+<script src="scripts/fractals.js"></script>
 
 <body>
 	<div class="header">
-		<div class="menu-fixed">
-			<img src="images/%D1%82%D1%96%D0%BB%D1%8C%D0%BA%D0%B8%20%D1%82%D0%B5%D0%BA%D1%81%D1%82.png" alt=""> 
-			<a href="#" onclick="scrollTeam()">Про нас</a>
-			 <a href="#" onclick="scrollAbout()">Довідка</a> 
-			 <a href="#" onclick="scrollAffin()">Афінні перетворення</a> 
-			 <a href="#" onclick="scrollColors()">Кольори</a> 
-			 <a href="#" onclick="scrollFractals()">Фрактали</a>
-			  <a href="#" onclick="scrollHome()">Головна</a> 
-			  </div>
+		<div class="menu-fixed"> <img src="images/%D1%82%D1%96%D0%BB%D1%8C%D0%BA%D0%B8%20%D1%82%D0%B5%D0%BA%D1%81%D1%82.png" alt=""> <a href="#" onclick="scrollTeam()">Про нас</a> <a href="#" onclick="scrollAbout()">Довідка</a> <a href="#" onclick="scrollAffin()">Афінні перетворення</a> <a href="#" onclick="scrollColors()">Кольори</a> <a href="#" onclick="scrollFractals()">Фрактали</a> <a href="#" onclick="scrollHome()">Головна</a> </div>
 	</div>
 	<div class="home height"> <img src="images/%D0%B1%D0%B5%D0%B7%20%D1%84%D0%BE%D0%BD%D1%83.png" alt="">
 		<div class="main-rect"> </div>
 	</div>
 	<div class="fractls height">
-	<div class="block">
-		<button class="icons" id="stepBack"><i class='far fa-arrow-alt-circle-left'></i></button>
-		<button class="icons" id="saveFractalImage" onclick="saveImage()"> <i class='far fa-save'></i></button>
+		<div class="block">
+			<button class="icons" id="stepBack"><i class='far fa-arrow-alt-circle-left'></i></button>
+			<button class="icons" id="saveFractalImage" onclick="saveImage()"> <i class='far fa-save'></i></button>
 		</div>
 		<div class="blocks">
-		<div class="canvas-fractal">
-			<canvas id="fractalCanvas" width="600" height="600"></canvas>
-		</div>
-		<div class="buttons-div">
-			<p id="choose">Оберіть фрактал:</p>
-			<p id="formula">Формула: f(z)=z*z+c</p>
-			<input type="radio" class = "chooseFract" id="mandelbrotSet" name="fractalChoose" value="mandelbrotSet" checked>
-			<label for="mandelbrotSet">Мандельброта</label>
-			<br>
-			<input type="radio" class = "chooseFract" id="juliaSet" name="fractalChoose" value="juliaSet">
-			<label for="juliaSet">Жюліа</label>
-			<br> <br>
-			<label for="constForJuliaX" id="label-juliaX"> C </label>
-			<input type="number" min="-1" max="1" step="0.05" id="constForJuliaX">
-			<label for="constForJuliaY" id="label-juliaY"> + i </label>
-			<input type="number" min="-1" max="1" step="0.05" id="constForJuliaY">
-			<br>
-			
-<br>
-			<div id="vol">
-			<label for="volume" >Масштаб </label>
-			<output id="sliderValue">2</output>
-			<input type="range" id="scale" min="1" max="10" step="0.1" value="2" onchange="getSliderInfo()">
+			<div class="canvas-fractal">
+				<canvas id="fractalCanvas" width="600" height="600"></canvas>
 			</div>
-			<p id="choose3">(Для масштабування натисніть на зображення)</p>
-			<br>
-			<p id="choose1">Колірна схема:</p>
-			<div class="sel">
-			<select id="col-sel">
-				<option value="1" id="green">Зелена</option>
-				<option value="2" id="red">Червона</option>
-				<option value="3" id="yellow">Жовта</option>
-				<option value="4" id="blue">Синя</option>
-			</select>
+			<div class="buttons-div">
+				<p id="choose">Оберіть фрактал:</p>
+				<p id="formula">Формула: f(z)=z*z+c</p>
+				<input type="radio" class="chooseFract" id="mandelbrotSet" name="fractalChoose" value="mandelbrotSet" checked>
+				<label for="mandelbrotSet">Мандельброта</label>
+				<br>
+				<input type="radio" class="chooseFract" id="juliaSet" name="fractalChoose" value="juliaSet">
+				<label for="juliaSet">Жюліа</label>
+				<br>
+				<br>
+				<label for="constForJuliaX" id="label-juliaX"> C </label>
+				<input type="number" min="-1" max="1" step="0.05" id="constForJuliaX">
+				<label for="constForJuliaY" id="label-juliaY"> + i </label>
+				<input type="number" min="-1" max="1" step="0.05" id="constForJuliaY">
+				<br>
+				<br>
+				<div id="vol">
+					<label for="volume">Масштаб </label>
+					<output id="sliderValue">2</output>
+					<input type="range" id="scale" min="1" max="10" step="0.1" value="2" onchange="getSliderInfo()"> </div>
+				<p id="choose3">(Для масштабування натисніть на зображення)</p>
+				<br>
+				<p id="choose1">Колірна схема:</p>
+				<div class="sel">
+					<select id="col-sel">
+						<option value="1" id="green">Зелена</option>
+						<option value="2" id="red">Червона</option>
+						<option value="3" id="yellow">Жовта</option>
+						<option value="4" id="blue">Синя</option>
+					</select>
+				</div>
+				<br>
+				<div class="but">
+					<button id="built-but" onclick="fractal()">Побудувати</button>
+				</div>
+				<br>
+				<p id="status">Статус:</p>
 			</div>
-			<br>
-			<div class="but">
-			<button id="built-but" onclick="fractal()">Побудувати</button>
-			</div>
-			<br>
-			<p id="status">Статус:</p>
-		</div>
 		</div>
 	</div>
 	<div class="colors height">
-		<p>Here will be color</p>
+		<div class="colour">
+			<div class="imags">
+				<canvas id="canvas"></canvas>
+				<canvas id="canvas2"></canvas>
+			</div>
+			<div class="buttons">
+				<input type="file" id="imageLoader" name="imageLoader" />
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam temporibus aspernatur tempore sunt animi iusto tenetur eaque non aliquam, ratione deserunt quis, corrupti doloribus quo voluptatibus quod neque fugit in!</p>
+			</div>
+		</div>
 	</div>
 	<div class="affin height">
 		<p>Here will be affini peretvorennia</p>
@@ -94,5 +93,6 @@
 		<p> some footer</p>
 	</div>
 </body>
+<script src="scripts/colors.js"></script>
 
 </html>

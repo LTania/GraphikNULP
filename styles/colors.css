@@ -1,0 +1,19 @@
+.colors .colour {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.imags,
+.buttons {
+	width: 50%;
+}
+
+.colors .imags {
+	text-align: center;
+}
+
+.colors canvas {
+	border: 1px solid black;
+	height: 40vh;
+}
