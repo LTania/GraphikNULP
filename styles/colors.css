@@ -1,13 +1,18 @@
 .colors .colour {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-around;
+}
+
+.colors {
+	font-family: Montserrat Alternates;
 }
 
 .imags,
 .buttons {
 	width: 50%;
 }
+
 
 .colors .imags {
 	text-align: center;
@@ -17,6 +22,78 @@
 	border: 1px solid black;
 	height: 40vh;
 }
-.colors img{
+
+.colors img {
 	width: 50px;
+}
+
+.colors button {
+	width: 150px;
+	height: 50px;
+}
+
+.colors h4 {
+	font-family: Montserrat Alternates;
+}
+
+.buttons {
+	margin-top: 30px;
+}
+
+.buttons {
+	background-color: #F8E8E8;
+	width: 35%
+}
+
+.colors input {
+	margin-top: 20px;
+}
+
+.colors label {
+	margin-left: 15px;
+}
+
+.colors input {}
+
+#Hsv {
+	margin-left: 50px;
+}
+
+#hSv {
+	margin-left: 60px;
+}
+
+#hsV {
+	margin-left: 70px;
+}
+
+#Cmyk {
+	margin-left: 70px;
+}
+#cMyk {
+	margin-left: 55px;
+}
+#cmYk {
+	margin-left: 96px;
+}
+#cmyK {
+	margin-left: 106px;
+}
+
+#imageLoader {
+	margin-top: 20px;
+	margin-left: 35px;
+}
+
+#color {
+	margin-top: 15px;
+	margin-left: 15px;
+}
+
+.affin{
+	margin-top: 50px;
+}
+
+#savePhoto1{
+	margin-right: 115px;
 }

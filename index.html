@@ -68,27 +68,55 @@
 		</div>
 	</div>
 	<div class="colors height" id="colors">
+		<button class="icons" id="savePhoto1" onclick="savePhoto1()"> <i class='far fa-save'></i></button>
 		<div class="colour">
 			<div class="imags">
+				<h4>HSV</h4>
 				<canvas id="canvas"></canvas>
+				<h4>CMYK</h4>
 				<canvas id="canvas2"></canvas>
 			</div>
 			<div class="buttons">
 				<input type="file" id="imageLoader" name="imageLoader" />
-				<br>
-				<button class="icons" id="saveFractalImage" onclick="doHSV()">
-					<p>To hsv</p>
-				</button>
-				<button class="icons" id="saveFractalImage" onclick="doCMYK()">
-					<p>To cmyk</p>
-				</button>
-				<!--				<img src="images/icons8-%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8C-%D0%BF%D0%B0%D0%BF%D0%BA%D1%83-500.png" alt="" id = "imageLoader" name="imageLoader">-->
-				<div id="color-status"></div>
-				<br>
-				<div id="color" style="width:30px;height:30px;"></div>
-				<label for="volume">Яскравість синього </label> <br>
-				<output id="brightValue">2</output>
-				<input type="range" id="bright" min="1" max="99" step="1" value="2" onchange="getBrightInfo()">  </div>
+				<div class="colors-info">
+					<br>
+					<label for="xColor">X: </label>
+					<input type="number" id="xColor">
+					<label for="xColor">Y: </label>
+					<input type="number" id="yColor">
+					<div id="color" style="width:30px;height:30px;"></div>
+					<label for="Hsv"> Колірний тон (H): </label>
+					<input type="number" id="Hsv">
+					<br>
+					<label for="hSv"> Насиченість (S): </label>
+					<input type="number" id="hSv">
+					<br>
+					<label for="hsV"> Яскравість (V): </label>
+					<input type="number" id="hsV">
+					<br>
+					<br>
+					<br>
+					<label for="Cmyk"> Блакитний (С): </label>
+					<input type="number" id="Cmyk">
+					<br>
+					<label for="cMyk"> Пурпуровий (M): </label>
+					<input type="number" id="cMyk">
+					<br>
+					<label for="cmYk"> Жовтий (Y): </label>
+					<input type="number" id="cmYk">
+					<br>
+					<label for="cmyK"> Чорний (K): </label>
+					<input type="number" id="cmyK">
+					<br>
+					<br>
+					<br>
+					<label for="volume">Яскравість синього </label>
+					<br>
+					<label for="">0%</label>
+					<input type="range" id="bright" min="1" max="99" step="1" value="2" onchange="getBrightInfo()">
+					<label for="">100%</label>
+					<input type="number" id="brightValue"> </div>
+			</div>
 		</div>
 	</div>
 	<div class="affin height" id="affin">

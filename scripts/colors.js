@@ -20,6 +20,8 @@ function handleImage(e) {
 		img.src = event.target.result;
 	}
 	reader.readAsDataURL(e.target.files[0]);
+	doHSV();
+	doCMYK();
 }
 
 function getPosition(obj) {
@@ -49,16 +51,19 @@ canvas.addEventListener("mousemove", function (e) {
 	var context = this.getContext('2d');
 	x = x * this.width / this.clientWidth
 	y = y * this.height / this.clientHeight;
-	var coord = "x=" + x + ", y=" + y;
+	document.getElementById("xColor").value = x.toFixed(2);
+	document.getElementById("yColor").value = y.toFixed(2);
 	var pixelData = context.getImageData(x, y, 1, 1).data;
 	var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
-	var tempRgb = "r=" + pixelData[0] + "g=" + pixelData[1] + "b=" + pixelData[2];
 	var hsv = rgbToHsv(pixelData[0], pixelData[1], pixelData[2]);
-	var strHsv = "       " + " h = " + hsv[0] + " s = " + hsv[1] + " v = " + hsv[2];
-	var newRgb = hsvToRgb(hsv[0], hsv[1], hsv[2]);
-	var strRGB = "       " + " r = " + newRgb[0] + " g = " + newRgb[1] + " b = " + newRgb[2];
-	// Draw the color and coordinates.
-	document.getElementById("color-status").innerHTML = coord + tempRgb + strHsv + strRGB;
+	var cmyk = rgbToCmyk(pixelData[0], pixelData[1], pixelData[2]);
+	document.getElementById("Hsv").value = hsv[0].toFixed(2);
+	document.getElementById("hSv").value = hsv[1].toFixed(2);
+	document.getElementById("hsV").value = hsv[2].toFixed(2);
+	document.getElementById("Cmyk").value = cmyk[0].toFixed(2);
+	document.getElementById("cMyk").value = cmyk[1].toFixed(2);
+	document.getElementById("cmYk").value = cmyk[2].toFixed(2);
+	document.getElementById("cmyK").value = cmyk[3].toFixed(2);
 	document.getElementById("color").style.backgroundColor = hex;
 }, false);
 canvas2.addEventListener("mousemove", function (e) {
@@ -68,16 +73,19 @@ canvas2.addEventListener("mousemove", function (e) {
 	var context = this.getContext('2d');
 	x = x * this.width / this.clientWidth
 	y = y * this.height / this.clientHeight;
-	var coord = "x=" + x + ", y=" + y;
+	document.getElementById("xColor").value = x.toFixed(2);
+	document.getElementById("yColor").value = y.toFixed(2);
 	var pixelData = context.getImageData(x, y, 1, 1).data;
 	var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
-	var tempRgb = "r=" + pixelData[0] + "g=" + pixelData[1] + "b=" + pixelData[2];
 	var cmyk = rgbToCmyk(pixelData[0], pixelData[1], pixelData[2]);
-	var strCmyk = "       " + " c = " + cmyk[0] + " m = " + cmyk[1] + " y= " + cmyk[2] + " k = " + cmyk[3];
-	var newRgb = cmykToRgb(cmyk[0], cmyk[1], cmyk[2], cmyk[3]);
-	var strRGB = "       " + " r = "+ newRgb[0] + " g = "+newRgb[1] + " b = " +newRgb[2];
-	// Draw the color and coordinates.
-	document.getElementById("color-status").innerHTML = coord + tempRgb + strCmyk + strRGB;
+	var hsv = rgbToHsv(pixelData[0], pixelData[1], pixelData[2]);
+	document.getElementById("Hsv").value = hsv[0].toFixed(2);
+	document.getElementById("hSv").value = hsv[1].toFixed(2);
+	document.getElementById("hsV").value = hsv[2].toFixed(2);
+	document.getElementById("Cmyk").value = cmyk[0].toFixed(2);
+	document.getElementById("cMyk").value = cmyk[1].toFixed(2);
+	document.getElementById("cmYk").value = cmyk[2].toFixed(2);
+	document.getElementById("cmyK").value = cmyk[3].toFixed(2);
 	document.getElementById("color").style.backgroundColor = hex;
 }, false);
 
@@ -166,9 +174,9 @@ function rgbToCmyk(r, g, b) {
 	g /= 255;
 	b /= 255;
 	var k = (1 - Math.max(r, g, b));
-	var c = (1 - r - k) / (1 - k) ;
-	var m = (1 - g - k) / (1 - k) ;
-	var y = (1 - b - k) / (1 - k) ;
+	var c = (1 - r - k) / (1 - k);
+	var m = (1 - g - k) / (1 - k);
+	var y = (1 - b - k) / (1 - k);
 	return [c, m, y, k];
 }
 
@@ -180,14 +188,14 @@ function cmykToRgb(c, m, y, k) {
 }
 
 function getBrightInfo() {
-    var sliderValue = document.getElementById("bright").value;
-    document.getElementById("brightValue").innerHTML = sliderValue;
+	var sliderValue = document.getElementById("bright").value;
+	document.getElementById("brightValue").value = sliderValue;
 	var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-	var originData = ctx2.getImageData(0,0, canvas2.width, canvas2.height);
+	var originData = ctx2.getImageData(0, 0, canvas2.width, canvas2.height);
 	for (var i = 0; i < imgData.data.length; i += 4) {
 		var hsv = rgbToHsv(originData.data[i], originData.data[i + 1], originData.data[i + 2]);
-		if(hsv[0]>=210 && hsv[0]<=270){
-			hsv[2]=sliderValue/100;
+		if (hsv[0] >= 210 && hsv[0] <= 270) {
+			hsv[2] = sliderValue / 100;
 		}
 		var rgbFromhsl = hsvToRgb(hsv[0], hsv[1], hsv[2]);
 		imgData.data[i] = rgbFromhsl[0];
@@ -196,3 +204,11 @@ function getBrightInfo() {
 	}
 	ctx.putImageData(imgData, 0, 0);
 };
+
+function savePhoto1() {
+    var canvas = document.getElementById("canvas");
+    var link = document.createElement('a');
+    link.download = "test.png";
+    link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
+    link.click();
+}
