@@ -183,9 +183,10 @@ function getBrightInfo() {
     var sliderValue = document.getElementById("bright").value;
     document.getElementById("brightValue").innerHTML = sliderValue;
 	var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+	var originData = ctx2.getImageData(0,0, canvas2.width, canvas2.height);
 	for (var i = 0; i < imgData.data.length; i += 4) {
-		var hsv = rgbToHsv(imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]);
-		if(hsv[0]>=220 && hsv[0]<=260){
+		var hsv = rgbToHsv(originData.data[i], originData.data[i + 1], originData.data[i + 2]);
+		if(hsv[0]>=210 && hsv[0]<=270){
 			hsv[2]=sliderValue/100;
 		}
 		var rgbFromhsl = hsvToRgb(hsv[0], hsv[1], hsv[2]);
