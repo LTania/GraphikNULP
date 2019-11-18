@@ -9,17 +9,22 @@
 	<link rel="stylesheet" href="styles/colors.css"> </head>
 <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<script src="scripts/header.js"></script>
 <script src="scripts/fractals.js"></script>
 
 <body>
 	<div class="header">
-		<div class="menu-fixed"> <img src="images/%D1%82%D1%96%D0%BB%D1%8C%D0%BA%D0%B8%20%D1%82%D0%B5%D0%BA%D1%81%D1%82.png" alt=""> <a href="#" onclick="scrollTeam()">Про нас</a> <a href="#" onclick="scrollAbout()">Довідка</a> <a href="#" onclick="scrollAffin()">Афінні перетворення</a> <a href="#" onclick="scrollColors()">Кольори</a> <a href="#" onclick="scrollFractals()">Фрактали</a> <a href="#" onclick="scrollHome()">Головна</a> </div>
+		<div class="menu-fixed"> <img src="images/%D1%82%D1%96%D0%BB%D1%8C%D0%BA%D0%B8%20%D1%82%D0%B5%D0%BA%D1%81%D1%82.png" alt=""> 
+		<a href="#"  id="team-nav-btn">Про нас</a> 
+		<a href="#"  id="about-nav-btn">Довідка</a> 
+		<a href="#"  id="affine-nav-btn">Афінні перетворення</a> 
+		<a href="#"  id="colors-nav-btn">Кольори</a> 
+		<a href="#"  id="fractals-nav-btn">Фрактали</a> 
+		<a href="#"  id="home-nav-btn">Головна</a> </div>
 	</div>
-	<div class="home height"> <img src="images/%D0%B1%D0%B5%D0%B7%20%D1%84%D0%BE%D0%BD%D1%83.png" alt="">
+	<div class="home height" id="home"> <img src="images/%D0%B1%D0%B5%D0%B7%20%D1%84%D0%BE%D0%BD%D1%83.png" alt="">
 		<div class="main-rect"> </div>
 	</div>
-	<div class="fractls height">
+	<div class="fractls height" id="fractals">
 		<div class="block">
 			<button class="icons" id="stepBack"><i class='far fa-arrow-alt-circle-left'></i></button>
 			<button class="icons" id="saveFractalImage" onclick="saveImage()"> <i class='far fa-save'></i></button>
@@ -68,15 +73,18 @@
 			</div>
 		</div>
 	</div>
-	<div class="colors height">
+	<div class="colors height" id="colors">
 		<div class="colour">
 			<div class="imags">
 				<canvas id="canvas"></canvas>
 				<canvas id="canvas2"></canvas>
 			</div>
 			<div class="buttons">
-			<button class="icons" id="saveFractalImage" onclick="doHSL()"> <p>To hsv</p></button>
+			<button class="icons" id="saveFractalImage" onclick="doHSV()"> <p>To hsv</p></button>
+			<button class="icons" id="saveFractalImage" onclick="doCMYK()"> <p>To cmyk</p></button>
+			<br>
 				<input type="file" id="imageLoader" name="imageLoader" />
+<!--				<img src="images/icons8-%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8C-%D0%BF%D0%B0%D0%BF%D0%BA%D1%83-500.png" alt="" id = "imageLoader" name="imageLoader">-->
 				<div id="color-status"></div><br>
 <div id="color" style="width:30px;height:30px;"></div>
 <p>
@@ -85,19 +93,21 @@
 			</div>
 		</div>
 	</div>
-	<div class="affin height">
+	<div class="affin height" id="affin">
 		<p>Here will be affini peretvorennia</p>
 	</div>
-	<div class="info height">
+	<div class="info height" id="info">
 		<p>Here will be information about computer graphic</p>
 	</div>
-	<div class="team height">
+	<div class="team height" id="team">
 		<p>It is our team</p>
 	</div>
 	<div class="footer">
 		<p> some footer</p>
 	</div>
 	<script src="scripts/colors.js"></script>
+	<script src="scripts/header.js"></script>
+
 
 </body>
 </html>

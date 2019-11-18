@@ -18,7 +18,7 @@ function handleImage(e){
         }
         img.src = event.target.result;
     }
-    reader.readAsDataURL(e.target.files[0]);     
+    reader.readAsDataURL(e.target.files[0]);   
 }
 function getPosition(obj) {
     var curleft = 0, curtop = 0;
@@ -52,12 +52,17 @@ canvas.addEventListener("mousemove",function(e){
     var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
 	
 	var tempRgb = "r="+ pixelData[0] + "g=" + pixelData[1]+ "b=" + pixelData[2];
+	var hsv = rgbToHsv(pixelData[0], pixelData[1], pixelData[2]);
+	var strHsv = "       " + " h = "+ hsv[0] + " s = "+hsv[1] + " v = " +hsv[2];
+	var newRgb = hsvToRgb(hsv[0], hsv[1], hsv[2]);
+		var strRGB = "       " + " r = "+ newRgb[0] + " g = "+newRgb[1] + " b = " +newRgb[2];
+
     // Draw the color and coordinates.
-    document.getElementById("color-status").innerHTML = coord + tempRgb;
+    document.getElementById("color-status").innerHTML = coord + tempRgb + strHsv+ strRGB;
     document.getElementById("color").style.backgroundColor = hex;
 },false);
 
-function doHSL(){
+function doHSV(){
 	var imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
 // invert colors
 for (var i=0;i<imgData.data.length;i+=4)
@@ -68,6 +73,15 @@ for (var i=0;i<imgData.data.length;i+=4)
 	  imgData.data[i+1]=rgbFromhsl[1];
 	  imgData.data[i+2]=rgbFromhsl[2];
   }
+	console.log(imgData.data[imgData.data.length-4])
+	console.log(imgData.data[imgData.data.length-3])
+	console.log(imgData.data[imgData.data.length-2])
+	console.log(rgbFromhsl[0])
+	console.log(rgbFromhsl[1])
+	console.log(rgbFromhsl[2])
+	console.log(hsv[0])
+	console.log(hsv[1])
+	console.log(hsv[2])
 ctx.putImageData(imgData,0,0);
 }
 
@@ -81,39 +95,35 @@ function rgbToHsv(r, g, b) {
   s = max == 0 ? 0 : d / max;
 
   if (max == min) {
-    h = 0; // achromatic
+    h = 0; 
   } else {
     switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
+      case r: h = 60*((g - b) / d + (g < b ? 6 : 0)%6); break;
+      case g: h = 60*((b - r) / d + 2); break;
+      case b: h = 60*((r - g) / d + 4); break;
     }
-
-    h /= 6;
+  if (h<0) h +=360;
   }
 
   return [ h, s, v ];
 }
 
 function hsvToRgb(h, s, v) {
-  var r, g, b;
-
-  var i = Math.floor(h * 6);
-  var f = h * 6 - i;
-  var p = v * (1 - s);
-  var q = v * (1 - f * s);
-  var t = v * (1 - (1 - f) * s);
-
-  switch (i % 6) {
-    case 0: r = v, g = t, b = p; break;
-    case 1: r = q, g = v, b = p; break;
-    case 2: r = p, g = v, b = t; break;
-    case 3: r = p, g = q, b = v; break;
-    case 4: r = t, g = p, b = v; break;
-    case 5: r = v, g = p, b = q; break;
+	  var r, g, b;
+  var c = v*s;
+  var x = c*(1-Math.abs((h/60)%2 - 1));
+  var m = v - c;
+var temp = Math.trunc(h/60);
+  switch (temp) {
+    case 0: r = c, g = x, b = 0; break;
+    case 1: r = x, g = c, b = 0; break;
+    case 2: r = 0, g = c, b = x; break;
+    case 3: r = 0, g = x, b = c; break;
+    case 4: r = x, g = 0, b = c; break;
+    case 5: r = c, g = 0, b = x; break;
   }
 
-  return [ r * 255, g * 255, b * 255 ];
+  return [ (r+m) * 255, (g +m)* 255, (b+m) * 255 ];
 }
 
 
