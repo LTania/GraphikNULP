@@ -178,3 +178,20 @@ function cmykToRgb(c, m, y, k) {
 	var b = 255 * (1 - y) * (1 - k);
 	return [r, g, b];
 }
+
+function getBrightInfo() {
+    var sliderValue = document.getElementById("bright").value;
+    document.getElementById("brightValue").innerHTML = sliderValue;
+	var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+	for (var i = 0; i < imgData.data.length; i += 4) {
+		var hsv = rgbToHsv(imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]);
+		if(hsv[0]>=220 && hsv[0]<=260){
+			hsv[2]=sliderValue/100;
+		}
+		var rgbFromhsl = hsvToRgb(hsv[0], hsv[1], hsv[2]);
+		imgData.data[i] = rgbFromhsl[0];
+		imgData.data[i + 1] = rgbFromhsl[1];
+		imgData.data[i + 2] = rgbFromhsl[2];
+	}
+	ctx.putImageData(imgData, 0, 0);
+};
