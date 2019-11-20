@@ -26,12 +26,6 @@
 .colors img {
 	width: 50px;
 }
-
-.colors button {
-	width: 150px;
-	height: 50px;
-}
-
 .colors h4 {
 	font-family: Montserrat Alternates;
 }
@@ -95,5 +89,5 @@
 }
 
 #savePhoto1{
-	margin-right: 115px;
+	margin-right: 60px;
 }

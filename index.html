@@ -68,7 +68,9 @@
 		</div>
 	</div>
 	<div class="colors height" id="colors">
-		<button class="icons" id="savePhoto1" onclick="savePhoto1()"> <i class='far fa-save'></i></button>
+		<div class="block">
+			<button class="icons" id="savePhoto1" onclick="savePhoto1()"> <i class='far fa-save'></i></button>
+		</div>
 		<div class="colour">
 			<div class="imags">
 				<h4>HSV</h4>
@@ -113,7 +115,7 @@
 					<label for="volume">Яскравість синього </label>
 					<br>
 					<label for="">0%</label>
-					<input type="range" id="bright" min="1" max="99" step="1" value="2" onchange="getBrightInfo()">
+					<input type="range" id="bright" min="1" max="99" step="1" value="50" onchange="getBrightInfo()">
 					<label for="">100%</label>
 					<input type="number" id="brightValue"> </div>
 			</div>

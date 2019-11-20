@@ -186,6 +186,7 @@ function cmykToRgb(c, m, y, k) {
 	var b = 255 * (1 - y) * (1 - k);
 	return [r, g, b];
 }
+var lastValue = document.getElementById("bright".value);
 
 function getBrightInfo() {
 	var sliderValue = document.getElementById("bright").value;
@@ -195,8 +196,16 @@ function getBrightInfo() {
 	for (var i = 0; i < imgData.data.length; i += 4) {
 		var hsv = rgbToHsv(originData.data[i], originData.data[i + 1], originData.data[i + 2]);
 		if (hsv[0] >= 210 && hsv[0] <= 270) {
-			hsv[2] = sliderValue / 100;
+			if (sliderValue > lastValue) {
+				hsv[2] -= hsv[2] * (sliderValue - 50) / 100;
+				hsv[2] = (hsv[2] < 0 ? 0 : hsv[2])
+			}
+			else {
+				hsv[2] += hsv[2] * (sliderValue - 50) / 100;
+				hsv[2] = (hsv[2] > 1 ? 1 : hsv[2])
+			}
 		}
+		lastValue = sliderValue;
 		var rgbFromhsl = hsvToRgb(hsv[0], hsv[1], hsv[2]);
 		imgData.data[i] = rgbFromhsl[0];
 		imgData.data[i + 1] = rgbFromhsl[1];
@@ -206,9 +215,9 @@ function getBrightInfo() {
 };
 
 function savePhoto1() {
-    var canvas = document.getElementById("canvas");
-    var link = document.createElement('a');
-    link.download = "test.png";
-    link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
-    link.click();
+	var canvas = document.getElementById("canvas");
+	var link = document.createElement('a');
+	link.download = "test.png";
+	link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
+	link.click();
 }
