@@ -1,0 +1,26 @@
+.affin-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	height: 75vh;
+}
+
+.affin-info {
+	font-family: Montserrat Alternates;
+}
+
+.affin-canvas {
+	text-align: center;
+	align-self: center;
+		width: 50%;
+
+}
+
+.affin-info {
+	background-color: #F8E8E8;
+	width: 35%;
+}
+
+.affin-canvas canvas {
+	border: 1px solid black;
+}
