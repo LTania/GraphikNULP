@@ -103,7 +103,7 @@ function fractal() {
             }
 
             // Return a number as a percentage
-            if (Math.abs(realComponentOfResult + imaginaryComponentOfResult) > 16)
+            if (Math.abs(realComponentOfResult + imaginaryComponentOfResult) > 2)
                 return (i / maxIterations * 100);
         }
         return 0;   // Return zero if in set 

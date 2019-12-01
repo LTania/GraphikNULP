@@ -128,8 +128,26 @@
 			<div class="affin-canvas">
 				<canvas id="canvas-affin"></canvas>
 			</div>
-			<div class="affin-info">
-				<p>Add all button here!</p>
+			<div class="affin-info" id="affin-buttons">
+				<div>
+				<label for="xA">X для A</label>
+				<input type="number" id="xA">
+				</div>
+				<div>
+				<label for="yA">Y для A</label>
+				<input type="number" id="yA">
+				</div>
+				<div>
+				<label for="xC">X для B</label>
+				<input type="number" id="xC">
+				 </div>
+				 <div>
+				<label for="yC">Y для B</label>
+				<input type="number" id="yC">
+				</div>
+				<div>
+				<button onclick="findDots()">Обчислити</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -144,6 +162,7 @@
 	</div>
 	<script src="scripts/colors.js"></script>
 	<script src="scripts/header.js"></script>
+	<script src="scripts/affineTransformation.js"></script>
 </body>
 
 </html>

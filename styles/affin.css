@@ -24,3 +24,19 @@
 .affin-canvas canvas {
 	border: 1px solid black;
 }
+
+#canvas-affin {
+	height: 600px;
+	width: 600px;
+}
+
+
+#affin-buttons{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#affin-buttons div{
+	padding: 10px;
+}
