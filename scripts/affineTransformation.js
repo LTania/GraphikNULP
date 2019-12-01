@@ -98,3 +98,27 @@ function drowSquare(){
     ctx.stroke();
 
 }
+
+function translationMatrix(m, n){
+	return [
+  [1, 0, 0],
+  [0, 1, 0],
+  [m, n, 1]
+];
+}
+
+function dilationMatrix(a, d){
+	return [
+  [a, 0, 0],
+  [0, d, 0],
+  [0, 0, 1]
+];
+}
+
+function rotationMatrix(fi){
+	return [
+  [Math.cos(fi), Math.sin(fi), 0],
+  [(-1)*Math.sin(fi), Math.cos(fi), 0],
+  [0, 0, 1]
+];
+}
