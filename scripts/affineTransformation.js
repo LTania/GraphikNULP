@@ -1,5 +1,9 @@
 ﻿document.addEventListener('DOMContentLoaded', init);
 
+var startX = -100;
+
+var startY = -100;
+
   function createGrid () {
     // draw a line every *step* pixels
     const step = 80;
@@ -9,9 +13,7 @@
     const width = canvas.width;
     const height = canvas.height;
 
-    const startX = -100;
-
-    const startY = -100;
+ 
 
     // set our styles
     ctx.save();
@@ -87,14 +89,14 @@ function drowSquare(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     init();
-    ctx.moveTo(100 + xA*20, 500 - 20*yA);
-    ctx.lineTo(100 + xB*20, 500 - 20*yB);
-    ctx.moveTo(100 + xB*20, 500 - 20*yB);
-    ctx.lineTo(100 + xC*20, 500 - 20*yC);
-    ctx.moveTo(100 + xC*20, 500 - 20*yC);
-    ctx.lineTo(100 + xD*20, 500 - 20*yD);
-    ctx.moveTo(100 + xD*20, 500 - 20*yD);
-    ctx.lineTo(100 + xA*20, 500 - 20*yA);
+    ctx.moveTo(startX*(-1) + xA*20, 600 + startY - 20*yA);
+    ctx.lineTo(startX*(-1) + xB*20, 600 + startY - 20*yB);
+    ctx.moveTo(startX*(-1) + xB*20, 600 + startY - 20*yB);
+    ctx.lineTo(startX*(-1) + xC*20, 600 + startY - 20*yC);
+    ctx.moveTo(startX*(-1) + xC*20, 600 + startY - 20*yC);
+    ctx.lineTo(startX*(-1) + xD*20, 600 + startY - 20*yD);
+    ctx.moveTo(startX*(-1) + xD*20, 600 + startY - 20*yD);
+    ctx.lineTo(startX*(-1) + xA*20, 600 + startY - 20*yA);
     ctx.stroke();
 
 }
