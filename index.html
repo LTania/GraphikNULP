@@ -132,19 +132,19 @@
 				<p>Введіть координати діагоналі квадрата AC:</p>
 				<div>
 				<label for="xA">X для A</label>
-				<input type="number" id="xA">
+				<input type="number" id="xA" value="8">
 				</div>
 				<div>
 				<label for="yA">Y для A</label>
-				<input type="number" id="yA">
+				<input type="number" id="yA" value="15">
 				</div>
 				<div>
 				<label for="xC">X для C</label>
-				<input type="number" id="xC">
+				<input type="number" id="xC" value="3">
 				 </div>
 				 <div>
 				<label for="yC">Y для C</label>
-				<input type="number" id="yC">
+				<input type="number" id="yC" value="4">
 				</div>
 				<div>
 				<button onclick="drowSquare()">Обчислити</button>
@@ -152,27 +152,27 @@
 				<p>Введіть параметри для перетворення:</p>
 				<div>
 				<label for="FI">Кут повороту</label>
-				<input type="number" id="FI">
+				<input type="number" id="FI" value="45">
 				</div>
 				<div>
 				<label for="mashtabX">Масштаб по Х</label>
-				<input type="number" id="mashtabX">
+				<input type="number" id="mashtabX" value="2">
 				</div>
 				<div>
 				<label for="mashtabY">Масштаб по Y</label>
-				<input type="number" id="mashtabY">
+				<input type="number" id="mashtabY" value="2">
 				</div>
 				<div>
 				<label for="zsuvX">Зсув по X</label>
-				<input type="number" id="zsuvX">
+				<input type="number" id="zsuvX" value="4">
 				</div>
 				<div>
 				<label for="zsuvY">Зсув по Y</label>
-				<input type="number" id="zsuvY">
+				<input type="number" id="zsuvY" value="5">
 				</div>
 		        <p>Оберіть комбінацію перетворень:</p>
 				<div>
-					<select id="compination">
+					<select id="combination">
 						<option value="1" id="mp">Масштаб->поворот</option>
 						<option value="2" id="mz">Масштаб->зсув</option>
 						<option value="3" id="zm">Зсув->масштаб</option>
@@ -188,7 +188,7 @@
 					</select>
 				</div>
 				<div>
-				<button onclick="">Побудувати</button>
+				<button onclick="doAfiinnePeretvorenia()">Побудувати</button>
 				</div>
 			</div>
 		</div>
