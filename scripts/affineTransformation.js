@@ -1,12 +1,12 @@
 ﻿document.addEventListener('DOMContentLoaded', init);
 var startX = -100;
 var startY = -100;
+var grade = 20;
 
 function createGrid() {
 	// draw a line every *step* pixels
 	const step = 80;
 	// our end points
-	console.log(canvas.width, canvas.height);
 	const width = canvas.width;
 	const height = canvas.height;
 	// set our styles
@@ -70,6 +70,28 @@ function drowSquare() {
 	}
 	canvas = document.getElementById('canvas-affin');
 	ctx = canvas.getContext('2d');
+	var minX = Math.min(xA, xB, xC, xD);
+	console.log(minX*grade);
+	if(minX < -3){
+		startX = -100 + minX * grade;
+	}
+
+	var minY = Math.min(yA, yB, yC, yD);
+	if(minY < -3){
+		startY = -100 - minY * grade;
+	}
+
+	var maxX = Math.max(xA, xB, xC, xD);
+	if(maxX > 23){
+		startX = -100 + (maxX - 23) * grade;
+	}
+
+	var maxY = Math.max(yA, yB, yC, yD);
+	if(maxX > 23){
+		startY = -100 + (maxY - 23) * grade;
+	}
+	console.log(maxX-23, maxY-23);
+	console.log(startX, startY);
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.beginPath();
 	init();
@@ -163,6 +185,29 @@ function doAfiinnePeretvorenia() {
 	translationM = translationMatrix(m, n);
 	dilationM = dilationMatrix(a, d);
 	rotationM = rotationMatrix(fi);
+
+	var minX = Math.min(a[0], b[0], c[0], d[0]);
+	if(minX < -3){
+		startX = -100 - minX * grade;
+	}
+
+	var minY = Math.min(a[1], b[1], c[1], d[1]);
+	if(minY < -3){
+		startY = -100 - minY * grade;
+	}
+
+	var maxX = Math.max(a[0], b[0], c[0], d[0]);
+	if(maxX > 23){
+		startX = -100 + (maxX - 23) * grade;
+	}
+
+	var maxY = Math.max(a[1], b[1], c[1], d[1]);
+	if(maxY > 23){
+		startY = -100 + (maxY - 23) * grade;
+	}
+
+	console.log(maxX-23, maxY-23);
+	console.log(startX, startY);
 
 	var dotes = [[xA, yA, 1], [xB, yB, 1], [xC, yC, 1], [xD, yD, 1]];
 	var e = document.getElementById("combination");
