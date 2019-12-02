@@ -84,6 +84,9 @@ function findDots() {
 
 function drowSquare(){
     findDots();
+	if(xA===xC && yA===yC){
+		alert("Діагональ не може бути точкою. Введіть інші координати!");
+	}
     canvas = document.getElementById('canvas-affin');
     ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);

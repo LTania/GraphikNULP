@@ -129,6 +129,7 @@
 				<canvas id="canvas-affin" width="600px" height="600px"></canvas>
 			</div>
 			<div class="affin-info" id="affin-buttons">
+				<p>Введіть координати діагоналі квадрата AC:</p>
 				<div>
 				<label for="xA">X для A</label>
 				<input type="number" id="xA">
@@ -138,15 +139,56 @@
 				<input type="number" id="yA">
 				</div>
 				<div>
-				<label for="xC">X для B</label>
+				<label for="xC">X для C</label>
 				<input type="number" id="xC">
 				 </div>
 				 <div>
-				<label for="yC">Y для B</label>
+				<label for="yC">Y для C</label>
 				<input type="number" id="yC">
 				</div>
 				<div>
 				<button onclick="drowSquare()">Обчислити</button>
+				</div>
+				<p>Введіть параметри для перетворення:</p>
+				<div>
+				<label for="FI">Кут повороту</label>
+				<input type="number" id="FI">
+				</div>
+				<div>
+				<label for="mashtabX">Масштаб по Х</label>
+				<input type="number" id="mashtabX">
+				</div>
+				<div>
+				<label for="mashtabY">Масштаб по Y</label>
+				<input type="number" id="mashtabY">
+				</div>
+				<div>
+				<label for="zsuvX">Зсув по X</label>
+				<input type="number" id="zsuvX">
+				</div>
+				<div>
+				<label for="zsuvY">Зсув по Y</label>
+				<input type="number" id="zsuvY">
+				</div>
+		        <p>Оберіть комбінацію перетворень:</p>
+				<div>
+					<select id="compination">
+						<option value="1" id="mp">Масштаб->поворот</option>
+						<option value="2" id="mz">Масштаб->зсув</option>
+						<option value="3" id="zm">Зсув->масштаб</option>
+						<option value="4" id="zp">Зсув->поворот</option>
+						<option value="5" id="pz">Поворот->зсув</option>
+						<option value="6" id="pm">Поворот->масштаб</option>
+						<option value="7" id="pzm">Поворот->зсув->масштаб</option>
+						<option value="8" id="pmz">Поворот->масштаб->зсув</option>
+						<option value="9" id="mpz">Масштаб->поворот->зсув</option>
+						<option value="10" id="mzp">Масштаб->зсув->поворот</option>
+						<option value="11" id="zmp">Зсув->масштаб->поворот</option>
+						<option value="12" id="zpm">Зсув->поворот->масштаб</option>
+					</select>
+				</div>
+				<div>
+				<button onclick="">Побудувати</button>
 				</div>
 			</div>
 		</div>
