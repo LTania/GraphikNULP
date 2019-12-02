@@ -119,7 +119,8 @@ function multiplyMatrices(m1, m2) {
 function drowSquareFromDots(a, b, c, d) {
 	canvas = document.getElementById('canvas-affin');
 	ctx = canvas.getContext('2d');
-	//ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	createGrid();
 	ctx.beginPath();
 	init();
 	ctx.moveTo(startX * (-1) + a[0] * 20, 600 + startY - 20 * a[1]);
