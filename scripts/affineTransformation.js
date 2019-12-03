@@ -60,38 +60,36 @@ function findDots() {
 	yB = yO + deltaX / 2;
 	xD = xO + deltaY / 2;
 	yD = yO - deltaX / 2;
-	console.log(xB, yB, xD, yD);
 }
 
 function drowSquare() {
 	findDots();
+	startX = -100;
+	startY = -100;
 	if (xA === xC && yA === yC) {
 		alert("Діагональ не може бути точкою. Введіть інші координати!");
 	}
 	canvas = document.getElementById('canvas-affin');
 	ctx = canvas.getContext('2d');
 	var minX = Math.min(xA, xB, xC, xD);
-	console.log(minX*grade);
 	if(minX < -3){
-		startX = -100 + minX * grade;
+		startX = -100 + Math.round(minX) * grade;
 	}
 
 	var minY = Math.min(yA, yB, yC, yD);
 	if(minY < -3){
-		startY = -100 - minY * grade;
+		startY = -100 + Math.round(minY) * grade;
 	}
 
 	var maxX = Math.max(xA, xB, xC, xD);
 	if(maxX > 23){
-		startX = -100 + (maxX - 23) * grade;
+		startX = -100 + (Math.round(maxX) - 23) * grade;
 	}
 
 	var maxY = Math.max(yA, yB, yC, yD);
 	if(maxX > 23){
-		startY = -100 + (maxY - 23) * grade;
+		startY = -100 + (Math.round(maxY) - 23) * grade;
 	}
-	console.log(maxX-23, maxY-23);
-	console.log(startX, startY);
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.beginPath();
 	init();
@@ -142,6 +140,30 @@ function drowSquareFromDots(a, b, c, d) {
 	canvas = document.getElementById('canvas-affin');
 	ctx = canvas.getContext('2d');
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	var minX = Math.min(a[0], b[0], c[0], d[0]);
+	if(minX < -3){
+		startX = -100 + Math.round(minX) * grade;
+	}
+
+	var minY = Math.min(a[1], b[1], c[1], d[1]);
+	if(minY < -3){
+		startY = -100 + Math.round(minY) * grade;
+	}
+
+	var maxX = Math.max(a[0], b[0], c[0], d[0]);
+	if(maxX > 23){
+		startX = -100 + (Math.round(maxX) - 24) * grade;
+	}
+
+	var maxY = Math.max(a[1], b[1], c[1], d[1]);
+	if(maxY > 23){
+		startY = -100 + (Math.round(maxY) - 24) * grade;
+	}
+
+	console.log("x", a[0], b[0], c[0], d[0]);
+	console.log("y", a[1], b[1], c[1], d[1]);
+	console.log(maxX-23, maxY-23);
+	console.log(startX, startY);
 	createGrid();
 	ctx.beginPath();
 	init();
@@ -185,29 +207,6 @@ function doAfiinnePeretvorenia() {
 	translationM = translationMatrix(m, n);
 	dilationM = dilationMatrix(a, d);
 	rotationM = rotationMatrix(fi);
-
-	var minX = Math.min(a[0], b[0], c[0], d[0]);
-	if(minX < -3){
-		startX = -100 - minX * grade;
-	}
-
-	var minY = Math.min(a[1], b[1], c[1], d[1]);
-	if(minY < -3){
-		startY = -100 - minY * grade;
-	}
-
-	var maxX = Math.max(a[0], b[0], c[0], d[0]);
-	if(maxX > 23){
-		startX = -100 + (maxX - 23) * grade;
-	}
-
-	var maxY = Math.max(a[1], b[1], c[1], d[1]);
-	if(maxY > 23){
-		startY = -100 + (maxY - 23) * grade;
-	}
-
-	console.log(maxX-23, maxY-23);
-	console.log(startX, startY);
 
 	var dotes = [[xA, yA, 1], [xB, yB, 1], [xC, yC, 1], [xD, yD, 1]];
 	var e = document.getElementById("combination");
