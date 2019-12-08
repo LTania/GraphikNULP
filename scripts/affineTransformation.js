@@ -64,6 +64,7 @@ function findDots() {
 
 function drowSquare() {
 	findDots();
+	grade = 20;
 	startX = -100;
 	startY = -100;
 	if (xA === xC && yA === yC) {
@@ -90,17 +91,22 @@ function drowSquare() {
 	if(maxX > 23){
 		startY = -100 + (Math.round(maxY) - 23) * grade;
 	}
+	if((maxX-minX)*20 > 500){
+		grade/=2;
+	} else if((maxY-minY)*20 > 500){
+		grade/=2;
+	}
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.beginPath();
 	init();
-	ctx.moveTo(startX * (-1) + xA * 20, 600 + startY - 20 * yA);
-	ctx.lineTo(startX * (-1) + xB * 20, 600 + startY - 20 * yB);
-	ctx.moveTo(startX * (-1) + xB * 20, 600 + startY - 20 * yB);
-	ctx.lineTo(startX * (-1) + xC * 20, 600 + startY - 20 * yC);
-	ctx.moveTo(startX * (-1) + xC * 20, 600 + startY - 20 * yC);
-	ctx.lineTo(startX * (-1) + xD * 20, 600 + startY - 20 * yD);
-	ctx.moveTo(startX * (-1) + xD * 20, 600 + startY - 20 * yD);
-	ctx.lineTo(startX * (-1) + xA * 20, 600 + startY - 20 * yA);
+	ctx.moveTo(startX * (-1) + xA * grade, 600 + startY - grade * yA);
+	ctx.lineTo(startX * (-1) + xB * grade, 600 + startY - grade * yB);
+	ctx.moveTo(startX * (-1) + xB * grade, 600 + startY - grade * yB);
+	ctx.lineTo(startX * (-1) + xC * grade, 600 + startY - grade * yC);
+	ctx.moveTo(startX * (-1) + xC * grade, 600 + startY - grade * yC);
+	ctx.lineTo(startX * (-1) + xD * grade, 600 + startY - grade * yD);
+	ctx.moveTo(startX * (-1) + xD * grade, 600 + startY - grade * yD);
+	ctx.lineTo(startX * (-1) + xA * grade, 600 + startY - grade * yA);
 	ctx.stroke();
 }
 
@@ -160,6 +166,12 @@ function drowSquareFromDots(a, b, c, d) {
 		startY = -100 + (Math.round(maxY) - 24) * grade;
 	}
 
+	if((maxX-minX)*20 > 500){
+		grade/=2;
+	} else if((maxY-minY)*20 > 500){
+		grade/=2;
+	}
+
 	console.log("x", a[0], b[0], c[0], d[0]);
 	console.log("y", a[1], b[1], c[1], d[1]);
 	console.log(maxX-23, maxY-23);
@@ -167,14 +179,14 @@ function drowSquareFromDots(a, b, c, d) {
 	createGrid();
 	ctx.beginPath();
 	init();
-	ctx.moveTo(startX * (-1) + a[0] * 20, 600 + startY - 20 * a[1]);
-	ctx.lineTo(startX * (-1) + b[0] * 20, 600 + startY - 20 * b[1]);
-	ctx.moveTo(startX * (-1) + b[0] * 20, 600 + startY - 20 * b[1]);
-	ctx.lineTo(startX * (-1) + c[0] * 20, 600 + startY - 20 * c[1]);
-	ctx.moveTo(startX * (-1) + c[0] * 20, 600 + startY - 20 * c[1]);
-	ctx.lineTo(startX * (-1) + d[0] * 20, 600 + startY - 20 * d[1]);
-	ctx.moveTo(startX * (-1) + d[0] * 20, 600 + startY - 20 * d[1]);
-	ctx.lineTo(startX * (-1) + a[0] * 20, 600 + startY - 20 * a[1]);
+	ctx.moveTo(startX * (-1) + a[0] * grade, 600 + startY - grade * a[1]);
+	ctx.lineTo(startX * (-1) + b[0] * grade, 600 + startY - grade * b[1]);
+	ctx.moveTo(startX * (-1) + b[0] * grade, 600 + startY - grade * b[1]);
+	ctx.lineTo(startX * (-1) + c[0] * grade, 600 + startY - grade * c[1]);
+	ctx.moveTo(startX * (-1) + c[0] * grade, 600 + startY - grade * c[1]);
+	ctx.lineTo(startX * (-1) + d[0] * grade, 600 + startY - grade * d[1]);
+	ctx.moveTo(startX * (-1) + d[0] * grade, 600 + startY - grade * d[1]);
+	ctx.lineTo(startX * (-1) + a[0] * grade, 600 + startY - grade * a[1]);
 	ctx.stroke();
 }
 
