@@ -11,6 +11,20 @@
 	height: 50px;
 }
 
+.footer {
+	background-color: rgba(36, 33, 53, 1);
+	width: 100%;
+	height: 35px;
+	text-align: center;
+	text-decoration: none;
+	font-family: Montserrat Alternates;
+	font-weight: bold;
+}
+.footer p{
+		color: #C3D4EA;
+padding-top: 5px;
+}
+
 .home {
 	margin-top: 50px;
 }
@@ -155,4 +169,10 @@
 #fractalCanvas {
 	margin-left: 90px;
 	float: left;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
