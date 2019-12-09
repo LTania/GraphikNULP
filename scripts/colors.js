@@ -1,19 +1,19 @@
 var imageLoader = document.getElementById('imageLoader');
 imageLoader.addEventListener('change', handleImage, false);
-var canvas = document.getElementById('canvas');
-var canvas2 = document.getElementById('canvas2');
-var ctx = canvas.getContext('2d');
-var ctx2 = canvas2.getContext('2d');
+var canvas_col = document.getElementById('canvas-col');
+var canvas2_col = document.getElementById('canvas2-col');
+var ctx = canvas_col.getContext('2d');
+var ctx2 = canvas2_col.getContext('2d');
 
 function handleImage(e) {
 	var reader = new FileReader();
 	reader.onload = function (event) {
 		var img = new Image();
 		img.onload = function () {
-			canvas.width = img.width;
-			canvas2.width = img.width;
-			canvas.height = img.height;
-			canvas2.height = img.height;
+			canvas_col.width = img.width;
+			canvas2_col.width = img.width;
+			canvas_col.height = img.height;
+			canvas2_col.height = img.height;
 			ctx.drawImage(img, 0, 0);
 			ctx2.drawImage(img, 0, 0);
 		}
@@ -44,7 +44,7 @@ function rgbToHex(r, g, b) {
 	if (r > 255 || g > 255 || b > 255) throw "Invalid color component";
 	return ((r << 16) | (g << 8) | b).toString(16);
 }
-canvas.addEventListener("mousemove", function (e) {
+canvas_col.addEventListener("mousemove", function (e) {
 	var pos = getPosition(this);
 	var x = e.pageX - pos.x;
 	var y = e.pageY - pos.y;
@@ -66,7 +66,7 @@ canvas.addEventListener("mousemove", function (e) {
 	document.getElementById("cmyK").value = cmyk[3].toFixed(2);
 	document.getElementById("color").style.backgroundColor = hex;
 }, false);
-canvas2.addEventListener("mousemove", function (e) {
+canvas2_col.addEventListener("mousemove", function (e) {
 	var pos = getPosition(this);
 	var x = e.pageX - pos.x;
 	var y = e.pageY - pos.y;
@@ -90,7 +90,7 @@ canvas2.addEventListener("mousemove", function (e) {
 }, false);
 
 function doHSV() {
-	var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+	var imgData = ctx.getImageData(0, 0, canvas_col.width, canvas_col.height);
 	for (var i = 0; i < imgData.data.length; i += 4) {
 		var hsv = rgbToHsv(imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]);
 		var rgbFromhsl = hsvToRgb(hsv[0], hsv[1], hsv[2]);
@@ -102,7 +102,7 @@ function doHSV() {
 }
 
 function doCMYK() {
-	var imgData = ctx2.getImageData(0, 0, canvas2.width, canvas2.height);
+	var imgData = ctx2.getImageData(0, 0, canvas2_col.width, canvas2_col.height);
 	for (var i = 0; i < imgData.data.length; i += 4) {
 		var cmyk = rgbToCmyk(imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]);
 		var rgbFromCmyk = cmykToRgb(cmyk[0], cmyk[1], cmyk[2], cmyk[3]);
@@ -191,8 +191,8 @@ var lastValue = document.getElementById("bright".value);
 function getBrightInfo() {
 	var sliderValue = document.getElementById("bright").value;
 	document.getElementById("brightValue").value = sliderValue;
-	var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-	var originData = ctx2.getImageData(0, 0, canvas2.width, canvas2.height);
+	var imgData = ctx.getImageData(0, 0, canvas_col.width, canvas_col.height);
+	var originData = ctx2.getImageData(0, 0, canvas2_col.width, canvas2_col.height);
 	for (var i = 0; i < imgData.data.length; i += 4) {
 		var hsv = rgbToHsv(originData.data[i], originData.data[i + 1], originData.data[i + 2]);
 		if (hsv[0] >= 210 && hsv[0] <= 270) {
@@ -215,9 +215,9 @@ function getBrightInfo() {
 };
 
 function savePhoto1() {
-	var canvas = document.getElementById("canvas");
+	var canvas = document.getElementById("canvas-col");
 	var link = document.createElement('a');
 	link.download = "test.png";
-	link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
+	link.href = canvas_col.toDataURL("image/png").replace("image/png", "image/octet-stream");;
 	link.click();
 }

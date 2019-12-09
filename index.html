@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="styles/header.css">
 	<link rel="stylesheet" href="styles/colors.css"> 
 	<link rel="stylesheet" href="styles/affin.css"> 
+	<link rel="stylesheet" href="styles/swiper.min.css"> 
+	<link rel="stylesheet" href="styles/slider.css"> 
 	</head>
 <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
@@ -19,6 +21,21 @@
 	</div>
 	<div class="home height" id="home"> <img src="images/%D0%B1%D0%B5%D0%B7%20%D1%84%D0%BE%D0%BD%D1%83.png" alt="">
 		<div class="main-rect"> </div>
+		<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide"> <img src="images/222.png" alt="" style="height: 50vh; width: auto">
+			</div>
+			<div class="swiper-slide"> <img src="images/slide2.png" alt="" style="width: auto; height: 50vh">
+			</div>
+			<div class="swiper-slide"> <img src="images/slide3.png" alt="" style="width: auto; height: 50vh">
+			</div>
+		</div>
+		<!-- Add Pagination -->
+		<div class="swiper-pagination"></div>
+		<!-- Add Arrows -->
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+	</div>
 	</div>
 	<div class="fractls height" id="fractals">
 		<div class="block">
@@ -76,9 +93,9 @@
 		<div class="colour">
 			<div class="imags">
 				<h4>HSV</h4>
-				<canvas id="canvas"></canvas>
+				<canvas id="canvas-col"></canvas>
 				<h4>CMYK</h4>
-				<canvas id="canvas2"></canvas>
+				<canvas id="canvas2-col"></canvas>
 			</div>
 			<div class="buttons">
 				<input type="file" id="imageLoader" name="imageLoader" />
@@ -204,7 +221,9 @@
 	</div>
 	<script src="scripts/colors.js"></script>
 	<script src="scripts/header.js"></script>
+	<script src="scripts/swiper.min.js"></script>
 	<script src="scripts/affineTransformation.js"></script>
+	<script src="scripts/slider.js"></script>
 </body>
 
 </html>
