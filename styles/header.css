@@ -176,3 +176,75 @@ padding-top: 5px;
   margin-left: auto;
   margin-right: auto;
 }
+
+.infoButton{
+	width: 30%;
+	height: 35px;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+#infoMenue{
+	margin: 2%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+#info{
+	margin: 1%;
+	background-color: #F8E8E8;
+	display: flex;
+	flex-direction: column;
+}
+
+.infoText{
+	padding: 3%;
+	padding-top: 0%;
+}
+
+.infoText{
+	display: flex;
+	text-align: center;
+}
+
+.textInPar{
+	width: 70%;
+}
+
+.infoContent {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-around;
+}
+
+.textInPar
+{
+	text-align: initial;
+	font-size: 30px;
+}
+
+#fractalImage{
+	width: 100%;
+}
+
+#images{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	width: 50%;
+}
+
+.infoImage{
+	width: 65%;
+}
+
+.infoHeader{
+	text-align: center;
+}
+
+#infoTextColour{
+	display: flex;
+	flex-direction: column;
+}

@@ -6,36 +6,40 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="styles/normalize.css">
 	<link rel="stylesheet" href="styles/header.css">
-	<link rel="stylesheet" href="styles/colors.css"> 
-	<link rel="stylesheet" href="styles/affin.css"> 
-	<link rel="stylesheet" href="styles/swiper.min.css"> 
-	<link rel="stylesheet" href="styles/slider.css"> 
-	</head>
+	<link rel="stylesheet" href="styles/colors.css">
+	<link rel="stylesheet" href="styles/affin.css">
+	<link rel="stylesheet" href="styles/swiper.min.css">
+	<link rel="stylesheet" href="styles/slider.css">
+</head>
 <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script src="scripts/fractals.js"></script>
 
 <body>
 	<div class="header">
-		<div class="menu-fixed"> <img src="images/%D1%82%D1%96%D0%BB%D1%8C%D0%BA%D0%B8%20%D1%82%D0%B5%D0%BA%D1%81%D1%82.png" alt=""> <a href="#" id="team-nav-btn">Про нас</a> <a href="#" id="about-nav-btn">Довідка</a> <a href="#" id="affine-nav-btn">Афінні перетворення</a> <a href="#" id="colors-nav-btn">Кольори</a> <a href="#" id="fractals-nav-btn">Фрактали</a> <a href="#" id="home-nav-btn">Головна</a> </div>
+		<div class="menu-fixed"> <img
+				src="images/%D1%82%D1%96%D0%BB%D1%8C%D0%BA%D0%B8%20%D1%82%D0%B5%D0%BA%D1%81%D1%82.png" alt=""> <a
+				href="#" id="team-nav-btn">Про нас</a> <a href="#" id="about-nav-btn">Довідка</a> <a href="#"
+				id="affine-nav-btn">Афінні перетворення</a> <a href="#" id="colors-nav-btn">Кольори</a> <a href="#"
+				id="fractals-nav-btn">Фрактали</a> <a href="#" id="home-nav-btn">Головна</a> </div>
 	</div>
 	<div class="home height" id="home"> <img src="images/%D0%B1%D0%B5%D0%B7%20%D1%84%D0%BE%D0%BD%D1%83.png" alt="">
 		<div class="main-rect"> </div>
 		<div class="swiper-container">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide"> <img src="images/222.png" alt="" style="height: 50vh; width: auto">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"> <img src="images/222.png" alt="" style="height: 50vh; width: auto">
+				</div>
+				<div class="swiper-slide"> <img src="images/slide2.png" alt="" style="width: auto; height: 50vh">
+				</div>
+				<div class="swiper-slide"> <img src="images/slide3.png" alt="" style="width: auto; height: 50vh">
+				</div>
 			</div>
-			<div class="swiper-slide"> <img src="images/slide2.png" alt="" style="width: auto; height: 50vh">
-			</div>
-			<div class="swiper-slide"> <img src="images/slide3.png" alt="" style="width: auto; height: 50vh">
-			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+			<!-- Add Arrows -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
 		</div>
-		<!-- Add Pagination -->
-		<div class="swiper-pagination"></div>
-		<!-- Add Arrows -->
-		<div class="swiper-button-next"></div>
-		<div class="swiper-button-prev"></div>
-	</div>
 	</div>
 	<div class="fractls height" id="fractals">
 		<div class="block">
@@ -49,7 +53,8 @@
 			<div class="buttons-div">
 				<p id="choose">Оберіть фрактал:</p>
 				<p id="formula">Формула: f(z)=z*z+c</p>
-				<input type="radio" class="chooseFract" id="mandelbrotSet" name="fractalChoose" value="mandelbrotSet" checked>
+				<input type="radio" class="chooseFract" id="mandelbrotSet" name="fractalChoose" value="mandelbrotSet"
+					checked>
 				<label for="mandelbrotSet">Мандельброта</label>
 				<br>
 				<input type="radio" class="chooseFract" id="juliaSet" name="fractalChoose" value="juliaSet">
@@ -65,7 +70,8 @@
 				<div id="vol">
 					<label for="volume">Масштаб </label>
 					<output id="sliderValue">2</output>
-					<input type="range" id="scale" min="1" max="10" step="0.1" value="2" onchange="getSliderInfo()"> </div>
+					<input type="range" id="scale" min="1" max="10" step="0.1" value="2" onchange="getSliderInfo()">
+				</div>
 				<p id="choose3">(Для масштабування натисніть на зображення)</p>
 				<br>
 				<p id="choose1">Колірна схема:</p>
@@ -136,7 +142,8 @@
 					<label for="">0%</label>
 					<input type="range" id="bright" min="1" max="99" step="1" value="50" onchange="getBrightInfo()">
 					<label for="">100%</label>
-					<input type="number" id="brightValue"> </div>
+					<input type="number" id="brightValue">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -148,46 +155,46 @@
 			<div class="affin-info" id="affin-buttons">
 				<p>Введіть координати діагоналі квадрата AC:</p>
 				<div>
-				<label for="xA">X для A</label>
-				<input type="number" id="xA" value="8">
+					<label for="xA">X для A</label>
+					<input type="number" id="xA" value="8">
 				</div>
 				<div>
-				<label for="yA">Y для A</label>
-				<input type="number" id="yA" value="15">
+					<label for="yA">Y для A</label>
+					<input type="number" id="yA" value="15">
 				</div>
 				<div>
-				<label for="xC">X для C</label>
-				<input type="number" id="xC" value="3">
-				 </div>
-				 <div>
-				<label for="yC">Y для C</label>
-				<input type="number" id="yC" value="4">
+					<label for="xC">X для C</label>
+					<input type="number" id="xC" value="3">
 				</div>
 				<div>
-				<button onclick="drowSquare()">Обчислити</button>
+					<label for="yC">Y для C</label>
+					<input type="number" id="yC" value="4">
+				</div>
+				<div>
+					<button onclick="drowSquare()">Обчислити</button>
 				</div>
 				<p>Введіть параметри для перетворення:</p>
 				<div>
-				<label for="FI">Кут повороту</label>
-				<input type="number" id="FI" value="45">
+					<label for="FI">Кут повороту</label>
+					<input type="number" id="FI" value="45">
 				</div>
 				<div>
-				<label for="mashtabX">Масштаб по Х</label>
-				<input type="number" id="mashtabX" value="2">
+					<label for="mashtabX">Масштаб по Х</label>
+					<input type="number" id="mashtabX" value="2">
 				</div>
 				<div>
-				<label for="mashtabY">Масштаб по Y</label>
-				<input type="number" id="mashtabY" value="2">
+					<label for="mashtabY">Масштаб по Y</label>
+					<input type="number" id="mashtabY" value="2">
 				</div>
 				<div>
-				<label for="zsuvX">Зсув по X</label>
-				<input type="number" id="zsuvX" value="4">
+					<label for="zsuvX">Зсув по X</label>
+					<input type="number" id="zsuvX" value="4">
 				</div>
 				<div>
-				<label for="zsuvY">Зсув по Y</label>
-				<input type="number" id="zsuvY" value="5">
+					<label for="zsuvY">Зсув по Y</label>
+					<input type="number" id="zsuvY" value="5">
 				</div>
-		        <p>Оберіть комбінацію перетворень:</p>
+				<p>Оберіть комбінацію перетворень:</p>
 				<div>
 					<select id="combination">
 						<option value="1" id="mp">Масштаб->поворот</option>
@@ -205,25 +212,87 @@
 					</select>
 				</div>
 				<div>
-				<button onclick="doAfiinnePeretvorenia()">Побудувати</button>
+					<button onclick="doAfiinnePeretvorenia()">Побудувати</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="info height" id="info">
-		<p>Here will be information about computer graphic</p>
-	</div>
-	<div class="team height" id="team">
-	<img src="images/photo_2019-12-09_17-17-24.jpg" alt="" class="center" style="padding-top: 100px; height: 85vh; width: auto">
-	</div>
-	<div class="footer">
+		<div id="infoMenue">
+			<button class="infoButton" onclick="chooseTextFract()">Фрактали</button>
+			<button class="infoButton" onclick="chooseTextColor()">Колір</button>
+			<button class="infoButton" onclick="chooseTextAffine()">Афінні перетворення</button>
+		</div>
+		<div class="infoText" id="infoTextFractals">
+			<div class="infoHeader">
+				<h1>Фрактали</h1>
+			</div>
+			<div class="infoContent">
+				<div class="textInPar">
+					<p>
+						Фракта́л — нерегулярна, самоподібна структура.
+						В широкому розумінні фрактал означає фігуру, малі частини якої в довільному збільшенні є
+						подібними до неї самої.
+						Термін фрактал увів 1975 року Бенуа Мандельброт.
+						Класифікація фракталів за способом побудови
+					</p>
+					<ul>
+						<li>Геометричні</li>
+						<li>Алгебраїчні (рекурентні)</li>
+						<li>Стохастичні (випадкові)</li>
+					</ul>
+					<p>
+						В нашій програми було реалізовано алгебраїчні фрактали,
+						а саме множина Мандельброта і множина Жуліа.
+					</p>
+				</div>
+				<div>
+					<img src="images/Fractal.jpg" alt="" id="fractalImage">
+				</div>
+			</div>
+		</div>
+		<div class="infoText" id="infoTextColour">
+			<div class="infoHeader">
+				<h1>Колір</h1>
+			</div>
+			<div class="infoContent">
+				<div class="textInPar">
+					<p>
+						Фракта́л — нерегулярна, самоподібна структура.
+						В широкому розумінні фрактал означає фігуру, малі частини якої в довільному збільшенні є
+						подібними до неї самої.
+						Термін фрактал увів 1975 року Бенуа Мандельброт.
+						Класифікація фракталів за способом побудови
+					</p>
+					<ul>
+						<li>Геометричні</li>
+						<li>Алгебраїчні (рекурентні)</li>
+						<li>Стохастичні (випадкові)</li>
+					</ul>
+					<p>
+						В нашій програми було реалізовано алгебраїчні фрактали,
+						а саме множина Мандельброта і множина Жуліа.
+					</p>
+				</div>
+				<div id="images">
+					<img src="images/CMYK.gif" alt="" class="infoImage">
+					<img src="images/HSV.png" alt="" class="infoImage">
+				</div>
+			</div>
+		</div>
+		<div class="team height" id="team">
+			<img src="images/photo_2019-12-09_17-17-24.jpg" alt="" class="center"
+				style="padding-top: 100px; height: 85vh; width: auto">
+		</div>
+		<div class="footer">
 			<p id="foot">Комп'ютерна графіка 2019</p>
-	</div>
-	<script src="scripts/colors.js"></script>
-	<script src="scripts/header.js"></script>
-	<script src="scripts/swiper.min.js"></script>
-	<script src="scripts/affineTransformation.js"></script>
-	<script src="scripts/slider.js"></script>
+		</div>
+		<script src="scripts/colors.js"></script>
+		<script src="scripts/header.js"></script>
+		<script src="scripts/swiper.min.js"></script>
+		<script src="scripts/affineTransformation.js"></script>
+		<script src="scripts/slider.js"></script>
+		<script src="scripts/chooseText.js"></script>
 </body>
 
 </html>
