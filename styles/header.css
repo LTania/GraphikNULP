@@ -248,3 +248,7 @@ padding-top: 5px;
 	display: flex;
 	flex-direction: column;
 }
+.info{
+	font-family: Montserrat Alternates;
+	font-weight: bold;	
+}
